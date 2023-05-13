@@ -17,7 +17,7 @@ export class EstudantesComponent implements OnInit {
     this.formGroupEstudante = this.formBuilder.group({
       id: [''],
       name: [''],
-      age: 0,
+      age: [''],
       email: [''],
       phone: ['']
     });
@@ -63,6 +63,12 @@ export class EstudantesComponent implements OnInit {
     this.estudanteService.delete(estudante).subscribe({
       next: () => this.loadEstudantes()
     });
+  }
+
+  verificarBtn : boolean = false;
+
+  exibir() {
+    this.verificarBtn = true;
   }
 
 }
