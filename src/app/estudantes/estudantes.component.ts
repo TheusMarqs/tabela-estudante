@@ -10,35 +10,27 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class EstudantesComponent implements OnInit {
   estudantes: Estudantes[] = [];
+  estudante: Estudantes = {} as Estudantes;
   isEditing: boolean = false;
-  formGroupEstudante: FormGroup;
 
-  constructor(private estudanteService: EstudanteService, private formBuilder: FormBuilder) {
-    this.formGroupEstudante = this.formBuilder.group({
-      id: [''],
-      name: [''],
-      age: [''],
-      email: [''],
-      phone: ['']
-    });
+  constructor(private estudanteService: EstudanteService) {
+    
   }
 
-  save() {
+  onSaveEvent(estudante: Estudantes) {
     if (this.isEditing) {
-      this.estudanteService.update(this.formGroupEstudante.value).subscribe({
+      this.estudanteService.update(estudante).subscribe({
         next: () => {
           this.loadEstudantes();
-          this.formGroupEstudante.reset();
           this.isEditing = false;
         }
       })
     }
 
     else {
-      this.estudanteService.save(this.formGroupEstudante.value).subscribe({
+      this.estudanteService.save(estudante).subscribe({
         next: data => {
           this.estudantes.push(data);
-          this.formGroupEstudante.reset();
         }
       })
     }
@@ -55,7 +47,7 @@ export class EstudantesComponent implements OnInit {
   }
     
   edit(estudante: Estudantes) {
-    this.formGroupEstudante.setValue(estudante);
+    this.estudante = estudante;
     this.isEditing = true;
   }
 
@@ -65,10 +57,9 @@ export class EstudantesComponent implements OnInit {
     });
   }
 
-  verificarBtn : boolean = false;
+  exibirBtn: boolean = false;
 
-  exibir() {
-    this.verificarBtn = true;
+  onExibirEvent(exibindo: boolean) {
+    this.exibirBtn = exibindo;
   }
-
 }
