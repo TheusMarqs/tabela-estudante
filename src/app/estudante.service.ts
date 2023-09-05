@@ -7,7 +7,7 @@ import { Estudantes } from './estudante';
   providedIn: 'root'
 })
 export class EstudanteService {
-  url = "http://localhost:3000/Estudantes";
+  url = "http://localhost:8080/students";
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class EstudanteService {
 
   save(estudante: Estudantes) : Observable<Estudantes> {
     return this.http.post<Estudantes>(this.url, estudante);
-  } 
+  }
 
   update(estudante: Estudantes) : Observable<Estudantes> {
     return this.http.put<Estudantes>(`${this.url}/${estudante.id}`, estudante);

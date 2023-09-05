@@ -8,9 +8,9 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">Email</th>
-          <th scope="col">Phone</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Semestre</th>
+          <th scope="col">Turma</th>
           <th scope="col">Opções</th>
         </tr>
       </thead>
@@ -18,9 +18,9 @@
         <tr *ngFor="let estudantes of estudantes">
           <th scope="row">{{estudantes.id}}</th>
           <td>{{estudantes.name}}</td>
-          <td>{{estudantes.age}}</td>
-          <td>{{estudantes.email}}</td>
-          <td>{{estudantes.phone}}</td>
+          <td>{{estudantes.cpf}}</td>
+          <td>{{estudantes.semestre}}</td>
+          <td>{{estudantes.turma}}</td>
           <td>
             <button class="btn btn-success me-1" (click)="edit(estudantes)">Editar</button>
             <button class="btn btn-danger" (click)="delete(estudantes)">Excluir</button>

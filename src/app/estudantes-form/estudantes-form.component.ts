@@ -23,9 +23,9 @@ export class EstudantesFormComponent implements OnChanges {
     this.formGroupEstudante = this.formBuilder.group({
       id: [''],
       name: [''],
-      age: [''],
-      email: [''],
-      phone: ['']
+      cpf: [''],
+      semestre: [''],
+      turma: ['']
     });
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -49,7 +49,7 @@ export class EstudantesFormComponent implements OnChanges {
       this.verificarBtn = false;
       this.txtBtn = 'Exibir';
     }
-    
+
     this.exibirEvent.emit(this.verificarBtn);
   }
 
