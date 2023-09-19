@@ -1,7 +1,7 @@
 <div class="row mt-4">
     <div class="col-8 m-auto">
 
-      <form [formGroup]="formGroupEstudante">
+      <form [formGroup]="formGroupStudent">
         <div class="mb-3">
           <div class="display-6 text-center">
             Cadastro
@@ -17,18 +17,18 @@
 
         <div class="mb-3">
           <label for="email" class="form-label">Semestre:</label>
-          <input type="text" formControlName="semestre" class="form-control" id="email" placeholder="Digite seu semestre">
+          <input type="text" formControlName="semester" class="form-control" id="email" placeholder="Digite seu semestre">
         </div>
 
         <div class="mb-3">
           <label for="numero" class="form-label">Turma:</label>
-          <input type="text" formControlName="turma" class="form-control" id="numero"
+          <input type="text" formControlName="class" class="form-control" id="numero"
             placeholder="Digite sua turma">
         </div>
 
         <div class="mb-3 d-flex justify-content-center">
           <button class="btn btn-primary me-2" (click)="save()">Salvar</button>
-          <button class="btn btn-success me-2" (click)="exibir()" [textContent]="txtBtn"></button>
+          <button class="btn btn-success me-2" (click)="show()" [textContent]="txtBtn"></button>
           <button class="btn btn-danger" (click)="clean()">Limpar</button>
         </div>
 

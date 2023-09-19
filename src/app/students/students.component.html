@@ -1,0 +1,32 @@
+<app-students-form [student]="student" (saveEvent)="onSaveEvent($event)" (showEvent)="onShowEvent($event)" (cleanEvent)="onCleanEvent()"></app-students-form>
+
+<div class="row">
+  <div class="col-10 m-auto">
+
+    <table *ngIf="showBtn" id="table" class="table table-bordered border-dark">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Semestre</th>
+          <th scope="col">Turma</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let students of students">
+          <th scope="row">{{students.id}}</th>
+          <td>{{students.name}}</td>
+          <td>{{students.cpf}}</td>
+          <td>{{students.semester}}</td>
+          <td>{{students.class}}</td>
+          <td>
+            <button class="btn btn-success me-1" (click)="edit(students)">Editar</button>
+            <button class="btn btn-danger" (click)="delete(students)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
