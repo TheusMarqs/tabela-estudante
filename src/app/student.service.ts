@@ -1,29 +1,27 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Students } from './student';
+import { Injectable } from '@angular/core';
+import { Student } from './students';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
   url = "http://localhost:8080/students";
-
   constructor(private http: HttpClient) { }
 
-  getStudent() : Observable<Students[]> {
-    return this.http.get<Students[]>(this.url);
+  getStudents(): Observable<Student[]> {
+    return this.http.get<Student[]>(this.url);
   }
+  save(student: Student): Observable<Student>{
+    return this.http.post<Student>(this.url, student);
+    }
 
-  save(students: Students) : Observable<Students> {
-    return this.http.post<Students>(this.url, students);
-  }
+    update(student: Student): Observable<Student>{
+      return this.http.put<Student>(`${this.url}/${student.id}`, student);
+      }
 
-  update(students: Students) : Observable<Students> {
-    return this.http.put<Students>(`${this.url}/${students.id}`, students);
-  }
-
-  delete(students: Students) : Observable<void> {
-    return this.http.delete<void>(`${this.url}/${students.id}`);
-  }
+    delete(student: Student): Observable<void>{
+      return this.http.delete<void>(`${this.url}/${student.id}`);
+      }
 }

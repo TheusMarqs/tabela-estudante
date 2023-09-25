@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { StudentComponent } from './student/student.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StudentsComponent } from './students/students.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StudentsFormComponent } from './students-form/students-form.component';
+import { StudentFormComponent } from './estudante-form/student-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentsComponent,
-    StudentsFormComponent
+    StudentComponent,
+    StudentFormComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    HttpClientModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
   providers: [],
