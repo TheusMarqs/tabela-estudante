@@ -18,22 +18,24 @@ export class StudentFormComponent implements OnChanges {
   @Output()
   cleanEvent = new EventEmitter<void>();
 
- formGroupStudent: FormGroup;
- submitted: boolean = false;
-  constructor(private formBuilder: FormBuilder
+  @Output()
+  deleteEvent = new EventEmitter<boolean>();
 
-  ) {
+  formGroupStudent: FormGroup;
+  submitted: boolean = false;
+
+  constructor(private formBuilder: FormBuilder) {
     this.formGroupStudent = formBuilder.group({
-      id:[],
-      name: ['', Validators.required],
-      school_class: ['', Validators.required],
-      cpf: ['', Validators.required],
-      semester: ['', Validators.required]
+      id: [],
+      name: ['', [Validators.required, Validators.pattern(/\S/)]],
+      school_class: ['', [Validators.required, Validators.pattern(/\S/)]],
+      cpf: ['', [Validators.required, Validators.pattern(/\S/)]],
+      semester: ['', [Validators.required, Validators.pattern(/\S/)]]
     });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.student.id){
+    if (this.student.id) {
       this.formGroupStudent.setValue(this.student);
     }
   }
@@ -64,5 +66,9 @@ export class StudentFormComponent implements OnChanges {
   }
   get semester(): any {
     return this.formGroupStudent.get("semester");
+  }
+
+  delete(deleting: boolean) {
+    this.formGroupStudent.reset();
   }
 }

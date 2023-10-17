@@ -1,5 +1,5 @@
 import { StudentService } from '../student.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Student } from '../students';
 
 
@@ -10,10 +10,14 @@ import { Student } from '../students';
 })
 export class StudentComponent implements OnInit {
 
+  @Output()
+  deleteEvent = new EventEmitter<boolean>();
+
   students: Student[] = [];
   student: Student = {} as Student;
   isEditing: boolean = false;
   isSubmitted: boolean = false;
+  isDeleting: boolean = false;
 
   constructor(private StudentService: StudentService) {
   }
@@ -68,5 +72,8 @@ export class StudentComponent implements OnInit {
         next: () => this.loadStudents()
       }
     );
+    this.deleteEvent.emit(false);
+    this.isEditing = false;
   }
+
 }
